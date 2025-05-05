@@ -300,3 +300,60 @@ DeepSeek-R1 addresses R1-Zero's limitations with a hybrid approach, balancing re
 ## Insights & Impact
 
 DeepSeek-R1 showcases RL's transformative potential, achieving **97.3% on MATH-500** and **71.5% on GPQA Diamond**. The "**aha moment**" reflects positive advantage-driven self-correction, while distillation democratizes access. Challenges like language mixing suggest future integration of multilingual reward terms, enhancing global applicability.
+
+
+## DeepSeek-R1 Reasoning Capability: Solving a Radical Equation
+
+This document summarizes DeepSeek-R1's step-by-step solution to the problem: "If $a > 1$, then the sum of the real solutions of $\sqrt{a - \sqrt{a + x}} = x$ is equal to...". The solution demonstrates the model's Chain-of-Thought (CoT) approach and self-correction, enhanced by reinforcement learning (RL).
+
+### Problem Statement
+
+Solve for the sum of real solutions of the equation:
+
+$$\sqrt{a - \sqrt{a + x}} = x$$
+
+where $a > 1$.
+
+### Solution Steps
+
+1.  **Initial Squaring:** Squaring both sides to eliminate the outer square root:
+
+    $$a - \sqrt{a + x} = x^2$$
+2.  **Attempted Second Squaring (Initial):** Squaring again leads to:
+
+    $$a + x = (a - x^2)^2$$
+3.  **Expansion and Quartic Equation (Initial):** Expanding the square:
+
+    $$a + x = a^2 - 2ax^2 + x^4$$
+
+    Rearranging into a quartic equation:
+
+    $$x^4 - 2ax^2 - x + (a^2 - a) = 0$$
+
+4.  **"Aha Moment" (Self-Correction):** Recognizing that the quartic equation is overly complex and may introduce extraneous solutions, the model reevaluates the approach.
+5.  **Isolation of the Radical (Corrected):** Returning to the equation after the first squaring and isolating the inner radical:
+
+    $$\sqrt{a + x} = a - x^2$$
+
+    This requires $a - x^2 \geq 0$ and $a + x \geq 0$.
+6.  **Squaring Again (Corrected):** Squaring both sides:
+
+    $$a + x = (a - x^2)^2$$
+
+    Which leads back to the quartic:
+
+    $$x^4 - 2ax^2 - x + (a^2 - a) = 0$$
+
+7.  **Solving the Quartic and Sum of Solutions:** For a general quartic equation $x^4 + bx^3 + cx^2 + dx + e = 0$, the sum of the roots is $-b$ (Vieta's formulas). In this case, $b = 0$, so the sum of roots is:
+
+    $$\text{Sum of roots} = -0 = 0$$
+
+8.  **Domain and Reality Check:** The solution must satisfy $\sqrt{a - \sqrt{a + x}} = x$, requiring $a - \sqrt{a + x} \geq 0$ and $x \geq 0$.
+
+### Key Takeaways
+
+*   **Self-Correction:** DeepSeek-R1 demonstrates the ability to detect and correct algebraic missteps through RL.
+*   **Mathematical Rigor:** The process involves iterative squaring, polynomial manipulation, and consideration of domain constraints.
+*   **Reasoning Depth:** The step-by-step reevaluation mimics human problem-solving.
+
+The sum of real solutions to the equation is likely 0 after filtering for valid solutions.
